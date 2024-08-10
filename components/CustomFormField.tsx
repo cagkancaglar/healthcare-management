@@ -2,7 +2,6 @@
 
 import {
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -16,13 +15,7 @@ import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectTrigger,
-  SelectValue,
-} from "./ui/select";
+import { Select, SelectContent, SelectTrigger, SelectValue } from "./ui/select";
 import { Textarea } from "./ui/textarea";
 import { Checkbox } from "./ui/checkbox";
 
@@ -125,15 +118,13 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
     case FormFieldType.SELECT:
       return (
         <FormControl>
-          <Select onValueChange={(e) => {
-            field.onChange(e)
-          }} value={field.value}>
+          <Select onValueChange={field.onChange} defaultValue={field.value}>
             <FormControl>
               <SelectTrigger className="shad-select-trigger text-gray-400">
                 <SelectValue placeholder={props.placeholder} />
               </SelectTrigger>
             </FormControl>
-            <SelectContent className="shad-select-content text-gray-400">
+            <SelectContent className="shad-select-content text-gray-400 ">
               {props.children}
             </SelectContent>
           </Select>

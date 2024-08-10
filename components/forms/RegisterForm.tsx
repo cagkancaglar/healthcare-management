@@ -7,9 +7,9 @@ import { Form, FormControl } from "@/components/ui/form";
 import CustomFormField from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { useState } from "react";
-import { PatientFormValidation, UserFormValidation } from "@/lib/validation";
+import { PatientFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
-import { createUser, registerPatient } from "@/lib/actions/patient.actions";
+import { registerPatient } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
 import { RadioGroup } from "@radix-ui/react-radio-group";
 import {
@@ -20,7 +20,7 @@ import {
 } from "@/constants";
 import { RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
-import { SelectItem } from "@radix-ui/react-select";
+import { SelectItem } from "../ui/select";
 import Image from "next/image";
 import { FileUploader } from "@/components/FileUploader";
 
@@ -203,8 +203,12 @@ const RegisterForm = ({ user }: { user: User }) => {
           placeholder="Select a Physician"
         >
           {Doctors.map((doctor) => (
-            <SelectItem key={doctor.name} value={doctor.name}>
-              <div className="flex cursor-pointer items-center gap-2">
+            <SelectItem
+              key={doctor.name}
+              value={doctor.name}
+              className="hover:bg-gray-500 transition-all duration-200 ease-linear cursor-pointer"
+            >
+              <div className="flex items-center gap-2">
                 <Image
                   src={doctor.image}
                   width={32}
@@ -285,7 +289,11 @@ const RegisterForm = ({ user }: { user: User }) => {
           placeholder="Select a identification type"
         >
           {IdentificationTypes.map((type) => (
-            <SelectItem key={type} value={type}>
+            <SelectItem
+              key={type}
+              value={type}
+              className="cursor-pointer hover:bg-gray-500 transition-all duration-200 ease-linear"
+            >
               {type}
             </SelectItem>
           ))}
