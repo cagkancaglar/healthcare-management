@@ -16,6 +16,7 @@ import {
 } from "../appwrite.config";
 import { parseStringify } from "../utils";
 
+// CREATE APPWRITE USER
 export const createUser = async (user: CreateUserParams) => {
   try {
     try {
@@ -41,6 +42,33 @@ export const createUser = async (user: CreateUserParams) => {
   }
 };
 
+// GET USER
+export const getUser = async (userId: string) => {
+  try {
+    const user = await users.get(userId);
+
+    return parseStringify(user);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// GET PATIENT
+export const getPatient = async (userId: string) => {
+  try {
+    const patients = await databases.listDocuments(
+      DATABASE_ID!,
+      PATIENT_COLLECTION_ID!,
+      [Query.equal("userId", userId)]
+    );
+
+    return parseStringify(patients.documents[0]);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// REGISTER PATIENT
 export const registerPatient = async ({
   identificationDocument,
   ...patient

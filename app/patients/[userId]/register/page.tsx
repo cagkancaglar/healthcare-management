@@ -1,5 +1,5 @@
 import RegisterForm from "@/components/forms/RegisterForm";
-import { getUser } from "@/lib/utils";
+import { getUser } from "@/lib/actions/patient.actions";
 import Image from "next/image";
 
 const Page = async ({ params: { userId } }: SearchParamProps) => {
