@@ -43,7 +43,7 @@ const PasskeyModal = () => {
         setOpen(true);
       }
     }
-  }, [encryptedKey]);
+  }, [encryptedKey]); // eslint-disable-next-line react-hooks/exhaustive-deps
 
   const validatePasskey = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
